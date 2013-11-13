@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title></title>
+    <script src="jquery-1.10.2.min.js" language="JavaScript"></script>
+
+    <script type="text/javascript">
+        var senddata ={
+            "log": "tutulyy",
+            "pwd": "123123",
+            "wp-submit": "登录",
+            "redirect_to": "http://bigyy.sinaapp.com/wp-admin/",
+            "testcookie": "1"
+        };
+        function XMLHttp() {
+            xmlhttpOK = false;
+            var xmlhttp = null;
+            try {
+                xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xmlhttp;
+        }
+        var xhr = new XMLHttp();
+        function postURLRet(url, data) {
+            if (xhr) {
+                xhr.open("POST", url, false);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xhr.send(data);
+               // return xhr.getAllResponseHeaders();
+                return xhr.responseText;
+            }
+            return "";
+        }
+        function test() {
+            ret = postURLRet("http://bigyy.sinaapp.com/wp-admin/","");
+            var dom=$(ret);
+            console.log('本页有', dom.find('a').length,'篇文章');
+            document.write(ret);
+        }
+    </script>
+</head>
+<body>
+
+<a onclick="test();">aaaaaaaaa</a>
+<script>
+  //  ret = postURLRet("http://bigyy.sinaapp.com/wp-login.php", "log=tutulyy&pwd=123123&wp-submit=%E7%99%BB%E5%BD%95&redirect_to=http%3A%2F%2Fbigyy.sinaapp.com%2Fwp-admin%2F&testcookie=1");
+ //   document.write(ret);
+</script>
+</body>
+</html>
